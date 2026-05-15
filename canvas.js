@@ -2,7 +2,7 @@ const canvas = document.getElementById("myCanvas");
 const ctx = canvas.getContext("2d");
 let img = document.createElement("img");
 img.src = "/red-lily.jpg";
-const symbols = "%*-=+*#0369.";
+const symbols = "%*-=+*#0369 ";
 const fontSize = 8;
 const threshold = 0.7;
 const pushRadius = 5;

@@ -18,6 +18,7 @@ html {
     width: 80%;
     justify-content: center;
     padding-top: 70px;
+    row-gap: 15rem;
 }
 
 .navbar {
@@ -69,19 +70,45 @@ li.name a{
     color: rgb(206, 216, 224);
 }
 
+
+.section-name {
+    width: 100%;
+    margin-bottom: 3rem;
+}
+
+.section-name h1 {
+    display: flex;
+    align-items: center;
+}
+
+.section-name h1::before{
+    content: "";
+    flex: 1;
+    border-top: solid rgb(64, 85, 112) 2px;
+    margin-right: 5px;
+}
+
+.section-name h1::after{
+    content: "";
+    flex: 1;
+    border-top: solid rgb(64, 85, 112) 2px;
+    margin-left: 7px;
+}
+
 .home {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    column-gap: 5rem;
     flex-direction: row;
     align-items: center;
-    min-height: 90vh;
+    min-height: 60vh;
 }
 
 .home-intro {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center10;
+    align-items: start;
+    justify-content: center;
 }
 
 .home-something {
@@ -94,7 +121,33 @@ li.name a{
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    min-height: 90vh;
+}
+
+.about-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;;
+}
+
+.about-text {
+    display: flex;
+    grid-column: 1;
+    flex-direction: column;
+    align-items: end;
+    justify-content: center;
+}
+
+.about-photo-container {
+    grid: 2;
+    width: 100%;
+    display: flex;
+    justify-content: center;    
+    align-items: center;
+}
+
+.about-photo {
+    height: 400px;
+    width: 400px;
 }
 
 .projects {
@@ -102,7 +155,6 @@ li.name a{
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    min-height: 90vh;
 }
 
 .bebe {
