@@ -102,8 +102,8 @@ li.name a{
     grid-template-columns: 1fr 1fr;
     column-gap: 5rem;
     flex-direction: row;
+    margin-top: 15rem;
     align-items: center;
-    min-height: 60vh;
 }
 
 .home h1 {
@@ -205,6 +205,25 @@ li.name a{
     flex-direction: column;
     align-items: center;
 }
+
+.project-card {
+    width: 80%;
+    height: 200px;
+    background-color: rgb(64, 85, 112);
+    border-radius: 7px;
+    box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.3);
+}
+
+.used-techs {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-top: 0.5rem;
+}
+
+
 
 .canvas {
     background-color: transparent;
