@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Anastasiia</title>
-  <link rel="stylesheet" href="/styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anastasiia</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="navigation">
@@ -22,10 +25,10 @@
     <div class="app">
         <div class="home" id="home">
             <div class="home-something">
-                <canvas id="myCanvas" class="bebe" style="width: 400px; height: 400px; cursor: crosshair; touch-action: none" width="400" height="400"></canvas>
+                <canvas id="myCanvas" class="canvas" style="width: 400px; height: 400px; cursor: crosshair; touch-action: none" width="400" height="400"></canvas>
             </div>
             <div class="home-intro">
-                <h1>Hello, I am Anastasiia Radchenko</h1>
+                <h1>Hello, I am <span style="color: rgb(255, 158, 207); text-shadow:0 0 2px rgb(255, 187, 221), 0 0 1px rgb(255, 187, 221)">Anastasiia</span></h1>
                 <p>I like beautiful things, so I enjoy creating them</p>
             </div>
         </div>
@@ -36,11 +39,19 @@
             </div>
             <div class="about-content">
                 <div class="about-text">
-                    <p>Originally from Ukraine, now based in Netherlands. I am a student at Karazin University</p> 
-                    <p>in Kharkiv, studying Computer Engineering.</p>
-                    <p>Along the way I figured out I like frontend.That`s why I started learning it myself.</p>
-                    <p>Outside of coding I read a lot of fiction and play video games.</p>
-                    <p>And I am actively building my skills and looking for junior opportunities</p>
+                    <p>Originally from Ukraine, now based in the <span style="color: rgb(255, 158, 207); text-shadow:0 0 2px rgb(255, 187, 221), 0 0 1px rgb(255, 187, 221)">Netherlands</span>. I am a student at Karazin University
+                    in Kharkiv, studying <span style="color: rgb(255, 158, 207); text-shadow:0 0 2px rgb(255, 187, 221), 0 0 1px rgb(255, 187, 221)">Computer Engineering</span>.
+                    Along the way I figured out I like <span style="color: rgb(255, 158, 207); text-shadow:0 0 2px rgb(255, 187, 221), 0 0 1px rgb(255, 187, 221)">frontend</span>.That`s why I started learning it myself.
+                    <span style="color: rgb(255, 158, 207); text-shadow:0 0 2px rgb(255, 187, 221), 0 0 1px rgb(255, 187, 221)">Technologies</span> I am working with:
+                    <ul class="techs">
+                        <li><span class="dash">-</span><span class="tech-span"><span style="color: rgb(206, 216, 224); text-shadow:0 0 2px rgb(211, 221, 229), 0 0 1px rgb(255, 187, 221)">JavaScript</span></span></li>
+                        <li><span class="dash">-</span><span class="tech-span"><span style="color: rgb(206, 216, 224); text-shadow:0 0 2px rgb(211, 221, 229), 0 0 1px rgb(255, 187, 221)">React</span></span></li>
+                        <li><span class="dash">-</span><span class="tech-span"><span style="color: rgb(206, 216, 224); text-shadow:0 0 2px rgb(211, 221, 229), 0 0 1px rgb(255, 187, 221)">HTML</span></span></li>
+                        <li><span class="dash">-</span><span class="tech-span"><span style="color: rgb(206, 216, 224); text-shadow:0 0 2px rgb(211, 221, 229), 0 0 1px rgb(255, 187, 221)">CSS</span></span></li>
+                        <li><span class="dash">-</span><span class="tech-span"><span style="color: rgb(206, 216, 224); text-shadow:0 0 2px rgb(211, 221, 229), 0 0 1px rgb(255, 187, 221)">TypeScript</span></span></li>
+                    </ul>
+                    Outside of coding I read a lot of fiction and play video games.
+                    And I am actively building my skills and looking for junior opportunities</p>
                 </div>
                 <div class="about-photo-container">
                     <img src="/examplephoto.jpg" alt="Photo of Anastasiia" class="about-photo">
