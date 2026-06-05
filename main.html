@@ -28,7 +28,7 @@
                 <canvas id="myCanvas" class="canvas" style="width: 400px; height: 400px; cursor: crosshair; touch-action: none" width="400" height="400"></canvas>
             </div>
             <div class="home-intro">
-                <h1>Hello, I am <span style="color: rgb(255, 158, 207); text-shadow:0 0 2px rgb(255, 187, 221), 0 0 1px rgb(255, 187, 221)">Anastasiia</span></h1>
+                <h1>Hello, I am <span class="highlight">Anastasiia</span></h1>
                 <p>I like beautiful things, so I enjoy creating them</p>
             </div>
         </div>
@@ -39,16 +39,16 @@
             </div>
             <div class="about-content">
                 <div class="about-text">
-                    <p>Originally from Ukraine, now based in the <span style="color: rgb(255, 158, 207); text-shadow:0 0 2px rgb(255, 187, 221), 0 0 1px rgb(255, 187, 221)">Netherlands</span>. I am a student at Karazin University
-                    in Kharkiv, studying <span style="color: rgb(255, 158, 207); text-shadow:0 0 2px rgb(255, 187, 221), 0 0 1px rgb(255, 187, 221)">Computer Engineering</span>.
-                    Along the way I figured out I like <span style="color: rgb(255, 158, 207); text-shadow:0 0 2px rgb(255, 187, 221), 0 0 1px rgb(255, 187, 221)">frontend</span>.That`s why I started learning it myself.
-                    <span style="color: rgb(255, 158, 207); text-shadow:0 0 2px rgb(255, 187, 221), 0 0 1px rgb(255, 187, 221)">Technologies</span> I am working with:
+                    <p>Originally from Ukraine, now based in the <span class="highlight">Netherlands</span>. I am a student at Karazin University
+                    in Kharkiv, studying <span class="highlight">Computer Engineering</span>.
+                    Along the way I figured out I like <span class="highlight">frontend</span>.That`s why I started learning it myself.
+                    <span class="highlight">Technologies</span> I am working with:
                     <ul class="techs">
-                        <li><span class="dash">-</span><span class="tech-span"><span style="color: rgb(206, 216, 224); text-shadow:0 0 2px rgb(211, 221, 229), 0 0 1px rgb(255, 187, 221)">JavaScript</span></span></li>
-                        <li><span class="dash">-</span><span class="tech-span"><span style="color: rgb(206, 216, 224); text-shadow:0 0 2px rgb(211, 221, 229), 0 0 1px rgb(255, 187, 221)">React</span></span></li>
-                        <li><span class="dash">-</span><span class="tech-span"><span style="color: rgb(206, 216, 224); text-shadow:0 0 2px rgb(211, 221, 229), 0 0 1px rgb(255, 187, 221)">HTML</span></span></li>
-                        <li><span class="dash">-</span><span class="tech-span"><span style="color: rgb(206, 216, 224); text-shadow:0 0 2px rgb(211, 221, 229), 0 0 1px rgb(255, 187, 221)">CSS</span></span></li>
-                        <li><span class="dash">-</span><span class="tech-span"><span style="color: rgb(206, 216, 224); text-shadow:0 0 2px rgb(211, 221, 229), 0 0 1px rgb(255, 187, 221)">TypeScript</span></span></li>
+                        <li><span class="dash">-</span><span class="tech-span"><span class="highlight-subtle">JavaScript</span></span></li>
+                        <li><span class="dash">-</span><span class="tech-span"><span class="highlight-subtle">React</span></span></li>
+                        <li><span class="dash">-</span><span class="tech-span"><span class="highlight-subtle">HTML</span></span></li>
+                        <li><span class="dash">-</span><span class="tech-span"><span class="highlight-subtle">CSS</span></span></li>
+                        <li><span class="dash">-</span><span class="tech-span"><span class="highlight-subtle">TypeScript</span></span></li>
                     </ul>
                     Outside of coding I read a lot of fiction and play video games.
                     And I am actively building my skills and looking for junior opportunities</p>
@@ -65,17 +65,17 @@
             </div>
             <div class="card-container">
                 <div class="media-carousel">
-                        media will be here
-                    </div>
+                    <img src="/project1.gif" alt="Project 1" class="project-media" onClick="openGithubProject()">
+                </div>
                 <div class="project-card">
                     <span class="project-title">Interactive recipe tutorial web-application.</span>
                     <div class="used-techs">
-                        <span style="color: rgb(206, 216, 224); text-shadow:0 0 2px rgb(211, 221, 229), 0 0 1px rgb(255, 187, 221)">- React</span>
-                        <span style="color: rgb(206, 216, 224); text-shadow:0 0 2px rgb(211, 221, 229), 0 0 1px rgb(255, 187, 221)">- TypeScript</span>
-                        <span style="color: rgb(206, 216, 224); text-shadow:0 0 2px rgb(211, 221, 229), 0 0 1px rgb(255, 187, 221)">- CSS</span>
-                        <span style="color: rgb(206, 216, 224); text-shadow:0 0 2px rgb(211, 221, 229), 0 0 1px rgb(255, 187, 221)">- Python</span>
-                        <span style="color: rgb(206, 216, 224); text-shadow:0 0 2px rgb(211, 221, 229), 0 0 1px rgb(255, 187, 221)">- Node.js</span>
-                        <span style="color: rgb(206, 216, 224); text-shadow:0 0 2px rgb(211, 221, 229), 0 0 1px rgb(255, 187, 221)">- Vite -</span>
+                        <span class="highlight-subtle">- React</span>
+                        <span class="highlight-subtle">- TypeScript</span>
+                        <span class="highlight-subtle">- CSS</span>
+                        <span class="highlight-subtle">- Python</span>
+                        <span class="highlight-subtle">- Node.js</span>
+                        <span class="highlight-subtle">- Vite -</span>
                     </div>  
                 </div>
             </div>
@@ -88,14 +88,21 @@
             <div class="contact-info">
                 <h3>You can reach me at:</h3>
                 <ul class="contact-list">
-                    <li>Email: <span style="color: rgb(206, 216, 224); text-shadow:0 0 2px rgb(211, 221, 229), 0 0 1px rgb(255, 187, 221)">Text me!</span></li>
-                    <li>LinkedIn: <span style="color: rgb(206, 216, 224); text-shadow:0 0 2px rgb(211, 221, 229), 0 0 1px rgb(255, 187, 221)">Find me on LinkedIn</span></li>
-                    <li>GitHub: <span style="color: rgb(206, 216, 224); text-shadow:0 0 2px rgb(211, 221, 229), 0 0 1px rgb(255, 187, 221)">Check out my projects</span></li>
+                    <li>Email: <span class="highlight-subtle" onClick="openEmail()">Text me!</span></li>
+                    <li>LinkedIn: <span class="highlight-subtle" onClick="openLinkedin()">Find me on LinkedIn</span></li>
+                    <li>GitHub: <span class="highlight-subtle" onClick="openGithub()">Check out my projects</span></li>
                 </ul>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="footer-content">
+                <p>Designed and coded by Anastasiia Radchenko</p>
+                <p>Copyright © 2026</p>
             </div>
         </div>
     </div>
 
     <script src="/canvas.js"></script>
+    <script src="/script.js"></script>
 </body>
 </html>

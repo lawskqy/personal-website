@@ -102,6 +102,7 @@ li.name a{
     flex-direction: row;
     margin-top: 10rem;
     align-items: center;
+    min-height: 55vh;
 }
 
 .home h1 {
@@ -149,7 +150,7 @@ li.name a{
 }
 
 .about-photo-container {
-    grid: 2;
+    grid-column: 2;
     width: 100%;
     display: flex;
     justify-content: center;    
@@ -197,6 +198,14 @@ li.name a{
     margin-right: 0.5rem;
 }
 
+.card-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+}
+
 .projects {
     display: flex;
     flex-direction: column;
@@ -216,6 +225,18 @@ li.name a{
     flex-direction: column;
 }
 
+.project-media {
+    width: 100%;
+    border-radius: 7px;
+    box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.3);
+}
+
+.project-media:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
 .used-techs {
     display: flex;
     flex-direction: row;
@@ -231,9 +252,10 @@ li.name a{
     align-items: center;
     justify-content: center;
     width: 100%;
+    margin-bottom: 5rem;
 }
 
-.contacts-info {
+.contact-info {
     display: flex;
     font-size: 1.5rem;
 }
@@ -267,6 +289,33 @@ li.name a{
     transition: transform 0.3s ease;
 }
 
+.footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 0.9rem;
+    border-top: solid rgb(64, 85, 112) 2px;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 0;
+}
+
 .canvas {
     background-color: transparent;
+}
+
+.highlight {
+    color: rgb(255, 158, 207);
+    text-shadow: 0 0 2px rgb(255, 187, 221), 0 0 1px rgb(255, 187, 221);
+}
+
+.highlight-subtle {
+    color: rgb(206, 216, 224);
+    text-shadow: 0 0 2px rgb(211, 221, 229), 0 0 1px rgb(255, 187, 221);
+    font-weight: 500;
+    font-size: 1.25rem;
 }
