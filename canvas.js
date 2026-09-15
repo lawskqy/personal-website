@@ -53,11 +53,18 @@ img.addEventListener("load", function() {
         mouse.y = e.clientY - rect.top;
     });
 
+    window.addEventListener("touchmove", e => {
+        let rect = canvas.getBoundingClientRect();
+        let touch = e.touches[0];
+        mouse.x = touch.clientX - rect.left;
+        mouse.y = touch.clientY - rect.top;
+    }, { passive: true });
+
     function updatePhysics() {
 
       for (let i = 0; i < pixelArray.length; i++) {
           let distance = Math.hypot(pixelArray[i].currentX - mouse.x, pixelArray[i].currentY - mouse.y);
-          if (distance < 50) {
+          if (distance > 0 && distance < 50) {
             let directionX = (pixelArray[i].currentX - mouse.x)/distance;
             let directionY = (pixelArray[i].currentY - mouse.y)/distance;
             pixelArray[i].velocityX += directionX;
