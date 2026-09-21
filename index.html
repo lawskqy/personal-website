@@ -3,16 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anastasiia</title>
-    <link rel="stylesheet" href="/styles.css">
+    <meta name="description" content="Portfolio of Anastasiia Radchenko, a frontend-focused computer engineering student based in the Netherlands.">
+    <title>Anastasiia Radchenko — Frontend Developer</title>
+    <link rel="stylesheet" href="./styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="navigation">
-        <nav class="navbar">
-            <ul>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <header class="navigation">
+        <nav class="navbar" aria-label="Main navigation">
+            <ul class="nav-list">
                 <li class="name"><a href="./index.html">Anastasiia Radchenko</a></li>
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
@@ -20,52 +22,54 @@
                 <li><a href="#contacts">Contacts</a></li>
             </ul>
         </nav>
-    </div>
+    </header>
 
     <div class="app">
-        <div class="home" id="home">
+        <main id="main-content">
+        <section class="home" id="home" aria-labelledby="home-title">
             <div class="home-something">
                 <canvas id="myCanvas" class="canvas" style="width: min(400px, 85vw); height: min(400px, 85vw); cursor: crosshair;" width="400" height="400"></canvas>
             </div>
             <div class="home-intro">
-                <h1>Hello, I am <span class="highlight">Anastasiia</span></h1>
+                <h1 id="home-title">Hello, I am <span class="highlight">Anastasiia</span></h1>
                 <p>I like beautiful things, so I enjoy creating them</p>
             </div>
-        </div>
+        </section>
 
-        <div id="about" class="about">
+        <section id="about" class="about" aria-labelledby="about-title">
             <div class="section-name">
-                <h1>/ about me</h1>
+                <h2 id="about-title">/ about me</h2>
             </div>
             <div class="about-content">
                 <div class="about-text">
                     <p>Originally from Ukraine, now based in the <span class="highlight">Netherlands</span>. I am a student at Karazin University
                     in Kharkiv, studying <span class="highlight">Computer Engineering</span>.
-                    Along the way I figured out I like <span class="highlight">frontend</span>.That`s why I started learning it myself.
-                    <span class="highlight">Technologies</span> I am working with:
-                    <ul class="techs">
+                    Along the way I figured out I like <span class="highlight">frontend</span>. That’s why I started learning it myself.</p>
+                    <p><span class="highlight">Technologies</span> I am working with:</p>
+                    <ul class="techs" aria-label="Technologies">
                         <li><span class="dash">-</span><span class="tech-span"><span class="highlight-subtle">JavaScript</span></span></li>
                         <li><span class="dash">-</span><span class="tech-span"><span class="highlight-subtle">React</span></span></li>
                         <li><span class="dash">-</span><span class="tech-span"><span class="highlight-subtle">HTML</span></span></li>
                         <li><span class="dash">-</span><span class="tech-span"><span class="highlight-subtle">CSS</span></span></li>
                         <li><span class="dash">-</span><span class="tech-span"><span class="highlight-subtle">TypeScript</span></span></li>
                     </ul>
-                    Outside of coding I read a lot of fiction and play video games.
-                    And I am actively building my skills and looking for junior opportunities</p>
+                    <p>Outside of coding I read a lot of fiction and play video games. And I am actively building my skills and looking for junior opportunities.</p>
                 </div>
                 <div class="about-photo-container">
-                    <img src="/examplephoto.jpg" alt="Photo of Anastasiia" class="about-photo">
+                    <img src="./examplephoto.jpg" alt="Photo of Anastasiia" class="about-photo">
                 </div>
             </div>
-        </div>
+        </section>
 
-        <div id="projects" class="projects">
+        <section id="projects" class="projects" aria-labelledby="projects-title">
             <div class="section-name">
-                <h1>/ projects</h1>
+                <h2 id="projects-title">/ projects</h2>
             </div>
             <div class="card-container">
                 <div class="media-carousel">
-                    <img src="/project1.gif" alt="Project 1" class="project-media" onClick="openGithubProject()">
+                    <button class="media-button" type="button" onclick="openGithubProject()" aria-label="Open the interactive recipe project on GitHub">
+                        <img src="./project1.gif" alt="Preview of the interactive recipe tutorial web application" class="project-media">
+                    </button>
                 </div>
                 <div class="project-card">
                     <span class="project-title">Interactive recipe tutorial web-application.</span>
@@ -79,21 +83,22 @@
                     </div>  
                 </div>
             </div>
-        </div>
+        </section>
 
-        <div id="contacts" class="contacts">
+        <section id="contacts" class="contacts" aria-labelledby="contacts-title">
             <div class="section-name">
-                <h1>/ contacts</h1>
+                <h2 id="contacts-title">/ contacts</h2>
             </div>
             <div class="contact-info">
                 <h3>You can reach me at:</h3>
                 <ul class="contact-list">
-                    <li>Email: <span class="highlight-subtle" onClick="openEmail()">Text me!</span></li>
-                    <li>LinkedIn: <span class="highlight-subtle" onClick="openLinkedin()">Find me on LinkedIn</span></li>
-                    <li>GitHub: <span class="highlight-subtle" onClick="openGithub()">Check out my projects</span></li>
+                    <li>Email: <button class="contact-action highlight-subtle" type="button" onclick="openEmail()">Text me!</button></li>
+                    <li>LinkedIn: <button class="contact-action highlight-subtle" type="button" onclick="openLinkedin()">Find me on LinkedIn</button></li>
+                    <li>GitHub: <button class="contact-action highlight-subtle" type="button" onclick="openGithub()">Check out my projects</button></li>
                 </ul>
             </div>
-        </div>
+        </section>
+        </main>
         <div class="footer">
             <div class="footer-content">
                 <p>Designed and coded by Anastasiia Radchenko</p>
@@ -102,7 +107,7 @@
         </div>
     </div>
 
-    <script src="/canvas.js"></script>
-    <script src="/script.js"></script>
+    <script src="./canvas.js"></script>
+    <script src="./script.js"></script>
 </body>
 </html>
