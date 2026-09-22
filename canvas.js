@@ -10,19 +10,22 @@ function createFlower(canvas, { interactive = false } = {}) {
   img.addEventListener("load", () => {
     const width = canvas.width;
     const height = canvas.height;
-    const fontSize = Math.max(8, Math.round(width / 52));
-    const scale = Math.max(width / img.naturalWidth, height / img.naturalHeight);
+    const padding = Math.round(Math.min(width, height) * 0.12);
+    const artWidth = width - padding * 2;
+    const artHeight = height - padding * 2;
+    const fontSize = Math.max(8, Math.round(artWidth / 52));
+    const scale = Math.max(artWidth / img.naturalWidth, artHeight / img.naturalHeight);
     const drawWidth = img.naturalWidth * scale;
     const drawHeight = img.naturalHeight * scale;
-    ctx.drawImage(img, (width - drawWidth) / 2, (height - drawHeight) / 2, drawWidth, drawHeight);
+    ctx.drawImage(img, padding + (artWidth - drawWidth) / 2, padding + (artHeight - drawHeight) / 2, drawWidth, drawHeight);
     const pixels = ctx.getImageData(0, 0, width, height).data;
     const points = [];
 
     ctx.clearRect(0, 0, width, height);
     ctx.fillStyle = "white";
     ctx.font = `${fontSize}px monospace`;
-    for (let y = 0; y < height; y += fontSize) {
-      for (let x = 0; x < width; x += fontSize) {
+    for (let y = padding; y < height - padding; y += fontSize) {
+      for (let x = padding; x < width - padding; x += fontSize) {
         const index = (y * width + x) * 4;
         const brightness = (pixels[index] + pixels[index + 1] + pixels[index + 2]) / 3;
         const point = { char: symbols[Math.floor((brightness / 255) * (symbols.length - 1))], originalX: x, originalY: y, currentX: x, currentY: y, velocityX: 0, velocityY: 0 };
