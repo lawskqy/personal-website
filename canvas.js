@@ -34,14 +34,33 @@ function createFlower(canvas, { interactive = false } = {}) {
     if (!interactive || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     const pointer = { x: -999, y: -999 };
+    let activePointerId = null;
     const updatePointer = (event) => {
       const rect = canvas.getBoundingClientRect();
-      const touch = event.touches?.[0];
-      pointer.x = ((touch?.clientX ?? event.clientX) - rect.left) * (width / rect.width);
-      pointer.y = ((touch?.clientY ?? event.clientY) - rect.top) * (height / rect.height);
+      if (!rect.width || !rect.height) return;
+      pointer.x = (event.clientX - rect.left) * (width / rect.width);
+      pointer.y = (event.clientY - rect.top) * (height / rect.height);
     };
-    canvas.addEventListener("pointermove", updatePointer, { passive: true });
-    canvas.addEventListener("pointerleave", () => { pointer.x = -999; pointer.y = -999; });
+    canvas.addEventListener("pointerdown", (event) => {
+      activePointerId = event.pointerId;
+      canvas.setPointerCapture(event.pointerId);
+      updatePointer(event);
+    });
+    canvas.addEventListener("pointermove", (event) => {
+      if (event.pointerType !== "mouse" && event.pointerId !== activePointerId) return;
+      updatePointer(event);
+    });
+    const releasePointer = (event) => {
+      if (event.pointerId !== activePointerId && event.pointerType !== "mouse") return;
+      activePointerId = null;
+      pointer.x = -999;
+      pointer.y = -999;
+    };
+    canvas.addEventListener("pointerup", releasePointer);
+    canvas.addEventListener("pointercancel", releasePointer);
+    canvas.addEventListener("pointerleave", (event) => {
+      if (event.pointerType === "mouse") { pointer.x = -999; pointer.y = -999; }
+    });
 
     function animate() {
       points.forEach((point) => {
