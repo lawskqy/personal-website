@@ -1,93 +1,85 @@
-const canvas = document.getElementById("myCanvas");
-const ctx = canvas.getContext("2d");
-let img = document.createElement("img");
-img.src = "/red-lily.jpg";
 const symbols = "%*-=+*#0369 ";
-const fontSize = 8;
-const threshold = 0.7;
-const pushRadius = 5;
-const spring = 0.025;
-const damping = 0.9;
+const sourceImage = "./red-lily.jpg";
 
+function createFlower(canvas, { interactive = false } = {}) {
+  if (!canvas) return;
+  const ctx = canvas.getContext("2d");
+  const img = new Image();
+  img.src = sourceImage;
 
-img.addEventListener("load", function() {
-    const cw = canvas.width;
-    const ch = canvas.height;
-    const scale = Math.max(cw/img.naturalWidth, ch/img.naturalHeight);
-    const drawW = img.naturalWidth * scale;
-    const drawH = img.naturalHeight * scale;
-    ctx.drawImage(img, (cw - drawW) / 2, (ch - drawH) / 2, drawW, drawH);
+  img.addEventListener("load", () => {
+    const width = canvas.width;
+    const height = canvas.height;
+    const fontSize = Math.max(8, Math.round(width / 52));
+    const scale = Math.max(width / img.naturalWidth, height / img.naturalHeight);
+    const drawWidth = img.naturalWidth * scale;
+    const drawHeight = img.naturalHeight * scale;
+    ctx.drawImage(img, (width - drawWidth) / 2, (height - drawHeight) / 2, drawWidth, drawHeight);
+    const pixels = ctx.getImageData(0, 0, width, height).data;
+    const points = [];
 
-    const pixelData = ctx.getImageData(0, 0, cw, ch);
-
-    ctx.clearRect(0, 0, cw, ch);
+    ctx.clearRect(0, 0, width, height);
     ctx.fillStyle = "white";
     ctx.font = `${fontSize}px monospace`;
-    let pixelArray = [];
-    
-    for (let row = 0; row < ch; row += fontSize) {
-        for (let col = 0; col < cw; col += fontSize) {
-            const idx = (row * cw + col) * 4;
-            const r = pixelData.data[idx];
-            const g = pixelData.data[idx + 1];
-            const b = pixelData.data[idx + 2];
-            const brightness = (r + g + b) / 3;
-            const charIdx = Math.floor((brightness / 255) * (symbols.length - 1));
-            ctx.fillText(symbols[charIdx], col, row + fontSize);
-            pixelArray.push({
-              char: symbols[charIdx],
-              originalX: col,
-              originalY: row,
-              currentX: col,
-              currentY: row,
-              velocityX: 0,
-              velocityY: 0
-            });
+    for (let y = 0; y < height; y += fontSize) {
+      for (let x = 0; x < width; x += fontSize) {
+        const index = (y * width + x) * 4;
+        const brightness = (pixels[index] + pixels[index + 1] + pixels[index + 2]) / 3;
+        const point = { char: symbols[Math.floor((brightness / 255) * (symbols.length - 1))], originalX: x, originalY: y, currentX: x, currentY: y, velocityX: 0, velocityY: 0 };
+        points.push(point);
+        ctx.fillText(point.char, x, y + fontSize);
+      }
+    }
+
+    if (!interactive || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const pointer = { x: -999, y: -999 };
+    const updatePointer = (event) => {
+      const rect = canvas.getBoundingClientRect();
+      const touch = event.touches?.[0];
+      pointer.x = ((touch?.clientX ?? event.clientX) - rect.left) * (width / rect.width);
+      pointer.y = ((touch?.clientY ?? event.clientY) - rect.top) * (height / rect.height);
+    };
+    canvas.addEventListener("pointermove", updatePointer, { passive: true });
+    canvas.addEventListener("pointerleave", () => { pointer.x = -999; pointer.y = -999; });
+
+    function animate() {
+      points.forEach((point) => {
+        const distance = Math.hypot(point.currentX - pointer.x, point.currentY - pointer.y);
+        if (distance > 0 && distance < 50) {
+          point.velocityX += ((point.currentX - pointer.x) / distance) * 0.9;
+          point.velocityY += ((point.currentY - pointer.y) / distance) * 0.9;
         }
+        point.velocityX += (point.originalX - point.currentX) * 0.025;
+        point.velocityY += (point.originalY - point.currentY) * 0.025;
+        point.velocityX *= 0.9;
+        point.velocityY *= 0.9;
+        point.currentX += point.velocityX;
+        point.currentY += point.velocityY;
+      });
+      ctx.clearRect(0, 0, width, height);
+      points.forEach((point) => ctx.fillText(point.char, point.currentX, point.currentY + fontSize));
+      requestAnimationFrame(animate);
     }
+    animate();
+  }, { once: true });
+}
 
-    let mouse = {x: -999, y: -999};
-    window.addEventListener("mousemove", e => {
-        let rect = canvas.getBoundingClientRect();
-        mouse.x = e.clientX - rect.left;
-        mouse.y = e.clientY - rect.top;
-    });
+createFlower(document.getElementById("myCanvas"), { interactive: window.matchMedia("(hover: hover) and (pointer: fine)").matches });
 
-    window.addEventListener("touchmove", e => {
-        let rect = canvas.getBoundingClientRect();
-        let touch = e.touches[0];
-        mouse.x = touch.clientX - rect.left;
-        mouse.y = touch.clientY - rect.top;
-    }, { passive: true });
+const dialog = document.getElementById("flower-dialog");
+const launchButton = document.querySelector(".flower-launch");
+const closeButton = document.querySelector(".dialog-close");
+let modalStarted = false;
 
-    function updatePhysics() {
-
-      for (let i = 0; i < pixelArray.length; i++) {
-          let distance = Math.hypot(pixelArray[i].currentX - mouse.x, pixelArray[i].currentY - mouse.y);
-          if (distance > 0 && distance < 50) {
-            let directionX = (pixelArray[i].currentX - mouse.x)/distance;
-            let directionY = (pixelArray[i].currentY - mouse.y)/distance;
-            pixelArray[i].velocityX += directionX;
-            pixelArray[i].velocityY += directionY;
-          }
-          pixelArray[i].velocityX += ((pixelArray[i].originalX - pixelArray[i].currentX) * spring);
-          pixelArray[i].velocityY += ((pixelArray[i].originalY - pixelArray[i].currentY) * spring);
-          pixelArray[i].velocityX *= damping;
-          pixelArray[i].velocityY *= damping;
-          pixelArray[i].currentX += pixelArray[i].velocityX;
-          pixelArray[i].currentY += pixelArray[i].velocityY;
-      }
-
-      ctx.clearRect(0, 0, cw, ch);
-      ctx.fillStyle = "white";
-      ctx.font = `${fontSize}px monospace`;
-
-      for (let i = 0; i < pixelArray.length; i++) {
-        ctx.fillText(pixelArray[i].char, pixelArray[i].currentX, pixelArray[i].currentY);
-      }
-
-      requestAnimationFrame(updatePhysics);
-    }
-
-    updatePhysics();
+launchButton?.addEventListener("click", () => {
+  if (!modalStarted) {
+    createFlower(document.getElementById("flower-modal-canvas"), { interactive: true });
+    modalStarted = true;
+  }
+  dialog?.showModal();
+});
+closeButton?.addEventListener("click", () => dialog?.close());
+dialog?.addEventListener("click", (event) => {
+  if (event.target === dialog) dialog.close();
 });
