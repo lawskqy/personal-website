@@ -43,7 +43,7 @@ body{background:radial-gradient(circle at 12% 8%,rgba(255,158,207,.09),transpare
 .home-something{position:relative}.home-something:before{content:'';position:absolute;width:min(78%,360px);aspect-ratio:1;border:1px solid rgba(255,158,207,.25);border-radius:50%;box-shadow:0 0 45px rgba(255,158,207,.12);pointer-events:none}
 .canvas{position:relative;z-index:1}
 .section-name h2{color:var(--ink);letter-spacing:.03em;text-shadow:0 2px 0 rgba(64,85,112,.45)}
-.section-name h2:first-letter{color:var(--pink)}
+.section-prefix{color:var(--pink);text-shadow:0 0 2px rgb(255,187,221)}
 .tech-span,.contact-action{transition:transform .25s ease,background-color .25s ease,box-shadow .25s ease}.tech-span:hover{transform:translate(-2px,-2px);background:rgb(73,96,124);box-shadow:6px 6px 0 rgba(64,85,112,.45)}
 .card-container{padding:1rem;border:1px solid rgba(206,216,224,.14);border-radius:.65rem;background:rgba(64,85,112,.08)}
 .media-button{overflow:hidden}.project-media{border:1px solid rgba(206,216,224,.2)}
